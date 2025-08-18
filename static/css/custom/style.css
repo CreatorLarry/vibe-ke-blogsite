@@ -31,7 +31,8 @@ h6 {
   letter-spacing: -0.02em;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: var(--kenyan-gold) !important;
 }
 
@@ -418,6 +419,10 @@ h1, h2 {
 @media (max-width: 768px) {
   .navbar-brand {
     font-size: 1.5rem;
+  }
+
+  .navbar-brand .disappear {
+    display: none;
   }
 
   .display-4 {
