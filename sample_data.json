@@ -1,0 +1,270 @@
+[
+{
+    "model": "authors.author",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$example$example=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "Admin",
+        "last_name": "User",
+        "email": "admin@example.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-01-01T00:00:00Z",
+        "bio": "Administrator of the Kenyan Events & Lifestyle Blog",
+        "profile_image": ""
+    }
+},
+{
+    "model": "authors.author",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$example$example=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "jane_doe",
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "jane@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-01-15T00:00:00Z",
+        "bio": "Travel enthusiast and food blogger based in Nairobi. Passionate about exploring Kenya's vibrant culture and sharing hidden gems.",
+        "profile_image": ""
+    }
+},
+{
+    "model": "authors.author",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$example$example=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "john_smith",
+        "first_name": "John",
+        "last_name": "Smith",
+        "email": "john@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-02-01T00:00:00Z",
+        "bio": "Event planner and lifestyle writer with a focus on Nairobi's exciting events scene. Always on the lookout for the next big thing.",
+        "profile_image": ""
+    }
+},
+{
+    "model": "authors.authorprofile",
+    "pk": 1,
+    "fields": {
+        "author": 2,
+        "website": "https://janedoe.com",
+        "twitter_handle": "janedoe",
+        "facebook_url": "https://facebook.com/janedoe",
+        "instagram_handle": "janedoe_insta",
+        "linkedin_url": "https://linkedin.com/in/janedoe"
+    }
+},
+{
+    "model": "authors.authorprofile",
+    "pk": 2,
+    "fields": {
+        "author": 3,
+        "website": "https://johnsmith.com",
+        "twitter_handle": "johnsmith",
+        "facebook_url": "https://facebook.com/johnsmith",
+        "instagram_handle": "johnsmith_insta",
+        "linkedin_url": "https://linkedin.com/in/johnsmith"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 1,
+    "fields": {
+        "name": "Events",
+        "slug": "events",
+        "description": "Upcoming events, festivals, and cultural celebrations happening in Kenya",
+        "icon": "fas fa-calendar-alt",
+        "order": 1,
+        "is_active": true,
+        "created_date": "2023-01-01T00:00:00Z",
+        "updated_date": "2023-01-01T00:00:00Z"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 2,
+    "fields": {
+        "name": "Food & Restaurants",
+        "slug": "food-restaurants",
+        "description": "Reviews of restaurants, street food, and culinary experiences across Kenya",
+        "icon": "fas fa-utensils",
+        "order": 2,
+        "is_active": true,
+        "created_date": "2023-01-01T00:00:00Z",
+        "updated_date": "2023-01-01T00:00:00Z"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 3,
+    "fields": {
+        "name": "New Spots",
+        "slug": "new-spots",
+        "description": "Discover new and exciting places to visit in Kenya",
+        "icon": "fas fa-map-marker-alt",
+        "order": 3,
+        "is_active": true,
+        "created_date": "2023-01-01T00:00:00Z",
+        "updated_date": "2023-01-01T00:00:00Z"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 4,
+    "fields": {
+        "name": "Lifestyle",
+        "slug": "lifestyle",
+        "description": "Fashion, wellness, entertainment, and lifestyle trends in Kenya",
+        "icon": "fas fa-heart",
+        "order": 4,
+        "is_active": true,
+        "created_date": "2023-01-01T00:00:00Z",
+        "updated_date": "2023-01-01T00:00:00Z"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 1,
+    "fields": {
+        "title": "Nairobi's Biggest Music Festival This Year",
+        "slug": "nairobi-biggest-music-festival",
+        "excerpt": "Experience the best of Kenyan music at this year's biggest festival in Nairobi",
+        "content": "The Nairobi Music Festival is back and bigger than ever! This year's lineup features some of Kenya's biggest artists alongside international acts. The three-day festival will take place at Central Park from July 15-17, 2023.\n\nHeadliners include Grammy-nominated artist Sauti Sol, who will be performing their latest hits, and international sensation Burna Boy. Other notable acts include Elani, Mejja, and rising star Nadia Mukami.\n\nTickets are available online and at select outlets across the city. Early bird tickets are still available at a discounted rate.\n\nDon't miss this incredible celebration of music and culture!",
+        "author": 3,
+        "category": 1,
+        "featured_image": "",
+        "is_featured": true,
+        "is_published": true,
+        "published_date": "2023-06-01T00:00:00Z",
+        "created_date": "2023-05-15T00:00:00Z",
+        "updated_date": "2023-05-20T00:00:00Z",
+        "view_count": 1250
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 2,
+    "fields": {
+        "title": "Hidden Gems: Best Street Food in Nairobi",
+        "slug": "best-street-food-nairobi",
+        "excerpt": "Discover Nairobi's best-kept secret street food spots that locals love",
+        "content": "Nairobi's street food scene is thriving, with vendors serving up delicious and affordable meals across the city. From traditional Kenyan dishes to fusion cuisine, there's something for everyone.\n\nOur top picks include:\n\n1. Mutura Master in downtown Nairobi - Known for their spicy sausages\n2. Chapati Corner in Eastlands - Serving fresh chapatis with various stews\n3. Kikuyu Snacks in Westlands - Famous for their crispy kaimati and tea\n4. Coastal Kitchen in Parklands - Authentic Swahili cuisine\n\nEach of these spots offers something unique, and the prices are incredibly reasonable. Most meals cost between KES 100-300, making them perfect for budget-conscious foodies.\n\nStreet food in Nairobi is not just about the food; it's also about the experience. You get to interact with locals, experience the hustle and bustle of the city, and enjoy authentic flavors that you won't find in fancy restaurants.",
+        "author": 2,
+        "category": 2,
+        "featured_image": "",
+        "is_featured": true,
+        "is_published": true,
+        "published_date": "2023-06-05T00:00:00Z",
+        "created_date": "2023-05-20T00:00:00Z",
+        "updated_date": "2023-05-25T00:00:00Z",
+        "view_count": 980
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 3,
+    "fields": {
+        "title": "New Art Gallery Opens in Karen",
+        "slug": "new-art-gallery-karen",
+        "excerpt": "Karen's newest art gallery showcases contemporary Kenyan artists",
+        "content": "The Nairobi Contemporary Art Gallery has officially opened its doors in the upscale Karen neighborhood. The gallery features works from both established and emerging Kenyan artists.\n\nLocated on Karen Road, the 5,000 square foot space houses rotating exhibitions, with a focus on contemporary African art. The inaugural exhibition, 'Roots and Wings,' features paintings, sculptures, and mixed-media installations by 20 local artists.\n\nGallery director Wanjiru Mwangi explains the vision: 'We want to create a space where Kenyan artists can showcase their work and where the community can engage with contemporary art. There's so much talent in this country that deserves to be celebrated.'\n\nThe gallery is open Tuesday through Sunday, from 10 AM to 6 PM. Admission is free, though donations are welcome. Special events, including artist talks and workshops, are planned throughout the year.",
+        "author": 2,
+        "category": 3,
+        "featured_image": "",
+        "is_featured": false,
+        "is_published": true,
+        "published_date": "2023-06-10T00:00:00Z",
+        "created_date": "2023-05-28T00:00:00Z",
+        "updated_date": "2023-06-01T00:00:00Z",
+        "view_count": 542
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 4,
+    "fields": {
+        "title": "Wellness Trends Taking Over Nairobi",
+        "slug": "wellness-trends-nairobi",
+        "excerpt": "From yoga studios to organic cafes, Nairobi's wellness scene is booming",
+        "content": "Nairobi's wellness industry is experiencing unprecedented growth, with new studios, cafes, and wellness centers opening every month. Health-conscious residents are embracing a more holistic approach to well-being.\n\nKey trends include:\n\n1. Yoga and mindfulness: New studios are popping up across the city, offering everything from traditional Hatha yoga to aerial yoga\n2. Organic and plant-based eating: Restaurants and cafes are increasingly offering organic and vegan options\n3. Mental health awareness: More people are seeking therapy and practicing mindfulness\n4. Fitness tech: Wearable devices and fitness apps are becoming increasingly popular\n\nPopular wellness destinations include:\n- The Yoga Hub in Lavington\n- Organic Corner Cafe in Kilimani\n- Serenity Spa in Westlands\n- Mindful Living Center in Parklands\n\nThis shift toward wellness reflects a broader change in lifestyle priorities among Nairobi's urban population, with more people recognizing the importance of mental and physical health.",
+        "author": 3,
+        "category": 4,
+        "featured_image": "",
+        "is_featured": false,
+        "is_published": true,
+        "published_date": "2023-06-12T00:00:00Z",
+        "created_date": "2023-06-01T00:00:00Z",
+        "updated_date": "2023-06-02T00:00:00Z",
+        "view_count": 765
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 5,
+    "fields": {
+        "title": "Maasai Mara Safari Season Begins",
+        "slug": "maasai-mara-safari-season",
+        "excerpt": "The best time to visit Maasai Mara for the Great Migration is approaching",
+        "content": "The annual wildebeest migration is one of nature's most spectacular events, and the best time to witness it in Maasai Mara is from July to October. This year's migration is expected to be particularly impressive.\n\nThe migration sees over 1.5 million wildebeest, along with hundreds of thousands of zebras and gazelles, move from the Serengeti in Tanzania to Maasai Mara in Kenya in search of fresh grazing.\n\nBest viewing spots include:\n- Mara Triangle\n- Central Mara\n- Northern Mara\n\nAccommodation options range from luxury lodges to budget campsites. Popular lodges include Keekorok Lodge, Mara Serena Lodge, and Olare Motorogi Camp.\n\nFor the best experience, book your safari well in advance, especially if you're planning to visit during peak season (August-September). Early morning and late afternoon game drives offer the best wildlife viewing opportunities.\n\nRemember to pack appropriate clothing, a good camera, and insect repellent. The experience of witnessing the migration is truly unforgettable.",
+        "author": 2,
+        "category": 1,
+        "featured_image": "",
+        "is_featured": true,
+        "is_published": true,
+        "published_date": "2023-06-15T00:00:00Z",
+        "created_date": "2023-06-05T00:00:00Z",
+        "updated_date": "2023-06-06T00:00:00Z",
+        "view_count": 1420
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 1,
+    "fields": {
+        "article": 1,
+        "author_name": "Mike Johnson",
+        "author_email": "mike@example.com",
+        "content": "Can't wait for this festival! Sauti Sol is amazing live.",
+        "is_approved": true,
+        "created_date": "2023-06-02T00:00:00Z",
+        "ip_address": "127.0.0.1"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 2,
+    "fields": {
+        "article": 1,
+        "author_name": "Sarah Williams",
+        "author_email": "sarah@example.com",
+        "content": "Is there parking available at the venue?",
+        "is_approved": true,
+        "created_date": "2023-06-03T00:00:00Z",
+        "ip_address": "127.0.0.1"
+    }
+},
+{
+    "model": "comments.comment",
+    "pk": 3,
+    "fields": {
+        "article": 2,
+        "author_name": "Tom Mwangi",
+        "author_email": "tom@example.com",
+        "content": "I love Chapati Corner! Their chicken stew is to die for.",
+        "is_approved": true,
+        "created_date": "2023-06-06T00:00:00Z",
+        "ip_address": "127.0.0.1"
+    }
+}
+]

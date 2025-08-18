@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}About - Kenyan Events & Lifestyle Blog{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="display-4 mb-4">About Kenyan Events & Lifestyle</h1>
+                
+                <div class="text-center mb-4">
+                    <img src="https://placehold.co/800x400" class="img-fluid rounded shadow" alt="About Us">
+                </div>
+                
+                <p class="lead">
+                    Welcome to Kenya's premier events and lifestyle blog, where we celebrate the vibrant culture, 
+                    exciting events, and dynamic food scene of this beautiful East African nation.
+                </p>
+                
+                <h3 class="mt-5">Our Mission</h3>
+                <p>
+                    Our mission is to showcase the best of Kenya through engaging articles, stunning photography, 
+                    and insightful reviews. We aim to be your go-to source for discovering new events, restaurants, 
+                    and exciting spots across the country.
+                </p>
+                
+                <h3 class="mt-5">What We Cover</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-calendar-alt me-2 text-primary"></i>Events</h5>
+                                <p class="card-text">
+                                    From music festivals to cultural celebrations, we keep you informed about the latest 
+                                    and greatest events happening in Kenya.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-utensils me-2 text-primary"></i>Food & Restaurants</h5>
+                                <p class="card-text">
+                                    Discover Kenya's diverse culinary landscape, from traditional dishes to international 
+                                    cuisine served at the country's finest restaurants.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-map-marker-alt me-2 text-primary"></i>New Spots</h5>
+                                <p class="card-text">
+                                    Explore new and exciting places in Kenya, from hidden gems to popular destinations 
+                                    that should be on every traveler's itinerary.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-heart me-2 text-primary"></i>Lifestyle</h5>
+                                <p class="card-text">
+                                    Dive into Kenya's lifestyle scene, including fashion, wellness, entertainment, 
+                                    and the unique experiences that make Kenya special.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="mt-5">Meet Our Team</h3>
+                <p>
+                    Our team of passionate writers and photographers are dedicated to bringing you the most 
+                    authentic and engaging content about Kenya's events and lifestyle scene.
+                </p>
+                
+                <div class="text-center mt-5">
+                    <a href="{% url 'articles:contact' %}" class="btn btn-primary btn-lg">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

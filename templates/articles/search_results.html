@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results - Kenyan Events & Lifestyle Blog{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="mb-4">Search Results</h1>
+        
+        {% if query %}
+        <p class="lead">Results for: "{{ query }}"</p>
+        {% endif %}
+        
+        {% if page_obj %}
+        <div class="row">
+            {% for article in page_obj %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    {% if article.featured_image %}
+                    <img src="{{ article.featured_image.url }}" class="card-img-top" alt="{{ article.title }}" 
+                        style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-primary align-self-start mb-2">{{ article.category.name }}</span>
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <p class="card-text">{{ article.excerpt|truncatewords:20 }}</p>
+                        <div class="mt-auto">
+                            <small class="text-muted">
+                                By {{ article.author.get_full_name }} on {{ article.published_date|date:"M d, Y" }}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ article.get_absolute_url }}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if page_obj.has_other_pages %}
+        <nav aria-label="Search results pagination">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ query }}&page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+                {% endif %}
+                
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ query }}&page={{ num }}">{{ num }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ query }}&page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+        {% else %}
+        <div class="text-center py-5">
+            {% if query %}
+            <h3>No articles found for "{{ query }}"</h3>
+            <p class="text-muted">Try different search terms.</p>
+            {% else %}
+            <h3>No search query provided</h3>
+            <p class="text-muted">Please enter a search term.</p>
+            {% endif %}
+            <a href="{% url 'articles:home' %}" class="btn btn-primary">Back to Home</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

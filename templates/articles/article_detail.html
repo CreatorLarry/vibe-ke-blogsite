@@ -1,0 +1,296 @@
+{% extends 'base.html' %} {% block title %}{{ article.title }} - Kenyan Events &
+Lifestyle Blog{% endblock %} {% block content %}
+<article class="py-5">
+  <div class="container">
+    <!-- Article Header -->
+    <header class="mb-5">
+      {% if article.featured_image %}
+      <div class="text-center mb-4">
+        <img
+          src="{{ article.featured_image.url }}"
+          class="img-fluid rounded shadow"
+          alt="{{ article.title }}"
+          style="max-height: 400px; object-fit: cover"
+        />
+      </div>
+      {% endif %}
+
+      <h1 class="display-4">{{ article.title }}</h1>
+
+      <div class="d-flex flex-wrap align-items-center text-muted mb-3">
+        <span class="badge bg-primary me-2">{{ article.category.name }}</span>
+        <span class="me-3"
+          >By
+          <a href="{{ article.author.get_absolute_url }}"
+            >{{ article.author.get_full_name }}</a
+          ></span
+        >
+        <span class="me-3">{{ article.published_date|date:"F d, Y" }}</span>
+        <span
+          ><i class="fas fa-eye me-1"></i> {{ article.view_count }} views</span
+        >
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="article-content">{{ article.content|linebreaks }}</div>
+
+        <!-- Tags -->
+        <div class="mt-4">
+          <h5>Tags</h5>
+          <div>
+            <span class="badge bg-secondary me-1">Kenya</span>
+            <span class="badge bg-secondary me-1">Travel</span>
+            <span class="badge bg-secondary me-1">Culture</span>
+          </div>
+        </div>
+
+        <!-- Social Sharing -->
+        <div class="mt-4">
+          <h5>Share this article</h5>
+          <div class="d-flex">
+            <a href="#" class="btn btn-primary me-2"
+              ><i class="fab fa-facebook-f me-1"></i> Facebook</a
+            >
+            <a href="#" class="btn btn-info me-2"
+              ><i class="fab fa-twitter me-1"></i> Twitter</a
+            >
+            <a href="#" class="btn btn-danger"
+              ><i class="fab fa-pinterest me-1"></i> Pinterest</a
+            >
+          </div>
+        </div>
+
+        <!-- Author Bio -->
+        <div class="card my-5 author-bio-card">
+          <div class="card-body">
+            <div class="d-flex">
+              {% if article.author.profile_image %}
+              <img
+                src="{{ article.author.profile_image.url }}"
+                class="rounded-circle me-3"
+                alt="{{ article.author.get_full_name }}"
+                style="width: 80px; height: 80px; object-fit: cover"
+              />
+              {% else %}
+              <div
+                class="rounded-circle bg-secondary me-3 d-flex align-items-center justify-content-center"
+                style="width: 80px; height: 80px"
+              >
+                <i class="fas fa-user text-white fa-2x"></i>
+              </div>
+              {% endif %}
+              <div>
+                <h5 class="card-title">{{ article.author.get_full_name }}</h5>
+                <p class="card-text">
+                  {{ article.author.bio|truncatewords:30 }}
+                </p>
+                <a
+                  href="{{ article.author.get_absolute_url }}"
+                  class="btn btn-outline-primary btn-sm"
+                  >View Profile</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Articles -->
+        {% if related_articles %}
+        <div class="my-5">
+          <h3>Related Articles</h3>
+          <div class="row">
+            {% for related_article in related_articles %}
+            <div class="col-md-4 mb-3">
+              <div class="card h-100 shadow-sm">
+                {% if related_article.featured_image %}
+                <img
+                  src="{{ related_article.featured_image.url }}"
+                  class="card-img-top"
+                  alt="{{ related_article.title }}"
+                  style="height: 150px; object-fit: cover"
+                />
+                {% endif %}
+                <div class="card-body d-flex flex-column">
+                  <span class="badge bg-primary align-self-start mb-2"
+                    >{{ related_article.category.name }}</span
+                  >
+                  <h5 class="card-title">{{ related_article.title }}</h5>
+                  <p class="card-text">
+                    {{ related_article.excerpt|truncatewords:15 }}
+                  </p>
+                  <a
+                    href="{{ related_article.get_absolute_url }}"
+                    class="btn btn-primary mt-auto"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Comments Section -->
+        <div id="comments" class="my-5">
+          <h3>Comments ({{ approved_comments_count }})</h3>
+
+          <!-- Approved Comments -->
+          {% for comment in approved_comments %}
+          <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <h6 class="card-title">{{ comment.author_name }}</h6>
+                <small class="text-muted"
+                  >{{ comment.created_date|date:"F d, Y" }}</small
+                >
+              </div>
+              <p class="card-text">{{ comment.content }}</p>
+            </div>
+          </div>
+          {% endfor %}
+
+          <!-- Comment Form -->
+          <div class="card mt-4 shadow-sm">
+            <div class="card-header">
+              <h5>Leave a Comment</h5>
+            </div>
+            <div class="card-body">
+              <form
+                action="{% url 'comments:add_comment' article.slug %}"
+                method="post"
+              >
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="content" class="form-label">Comment</label>
+                  <textarea
+                    class="form-control"
+                    id="content"
+                    name="content"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Post Comment
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+        <div class="sticky-top" style="top: 100px">
+          <!-- Newsletter Signup -->
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h5>Subscribe to Newsletter</h5>
+            </div>
+            <div class="card-body">
+              <p>Get the latest articles delivered to your inbox.</p>
+              <form action="{% url 'newsletter:subscribe' %}" method="post">
+                {% csrf_token %}
+                <input
+                  type="hidden"
+                  name="next"
+                  value="{{ request.get_full_path }}"
+                />
+                <div class="mb-2">
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Your Email"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Popular Posts -->
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h5>Popular Posts</h5>
+            </div>
+            <div class="card-body">
+              {% for popular_article in popular_posts %}
+              <div class="d-flex mb-3">
+                {% if popular_article.featured_image %}
+                <img
+                  src="{{ popular_article.featured_image.url }}"
+                  class="me-2"
+                  alt="{{ popular_article.title }}"
+                  style="width: 60px; height: 60px; object-fit: cover"
+                />
+                {% endif %}
+                <div>
+                  <h6 class="mb-0">
+                    <a href="{{ popular_article.get_absolute_url }}"
+                      >{{ popular_article.title|truncatewords:6 }}</a
+                    >
+                  </h6>
+                  <small class="text-muted"
+                    >{{ popular_article.published_date|date:"M d, Y" }}</small
+                  >
+                </div>
+              </div>
+              {% empty %}
+              <p>No related posts yet.</p>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <h5>Categories</h5>
+            </div>
+            <div class="card-body">
+              <div class="d-flex flex-wrap">
+                {% for category in categories %}
+                <a
+                  href="{{ category.get_absolute_url }}"
+                  class="btn btn-outline-primary btn-sm m-1"
+                  >{{ category.name }}</a
+                >
+                {% empty %}
+                <p>No related categories yet.</p>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+{% endblock %}
