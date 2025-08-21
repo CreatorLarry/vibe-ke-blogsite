@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ vlog.title }} - Kenyan Events & Lifestyle Blog{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <article>
+                    <header class="mb-4">
+                        <h1 class="display-4">{{ vlog.title }}</h1>
+                        <div class="d-flex align-items-center text-muted mb-3">
+                            <span class="badge bg-primary me-2">{{ vlog.category.name }}</span>
+                            <span class="mx-2">•</span>
+                            <small>By {{ vlog.author.get_full_name }}</small>
+                            <span class="mx-2">•</span>
+                            <small>{{ vlog.published_date|date:"F d, Y" }}</small>
+                            <span class="mx-2">•</span>
+                            <small><i class="fas fa-eye me-1"></i> {{ vlog.view_count }} views</small>
+                        </div>
+                    </header>
+                    
+                    <div class="mb-4">
+                        {% if vlog.thumbnail %}
+                        <img src="{{ vlog.thumbnail.url }}" class="img-fluid rounded shadow" alt="{{ vlog.title }}">
+                        {% endif %}
+                    </div>
+                    
+                    <div class="article-content">
+                        <p>{{ vlog.description }}</p>
+                    </div>
+                    
+                    <div class="ratio ratio-16x9 my-4">
+                        <iframe src="{{ vlog.get_embed_url }}" 
+                                title="{{ vlog.title }}" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                </article>
+                
+                <!-- Related Vlogs -->
+                {% if related_vlogs %}
+                <section class="mt-5">
+                    <h3 class="mb-4">Related Vlogs</h3>
+                    <div class="row">
+                        {% for related_vlog in related_vlogs %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                {% if related_vlog.thumbnail %}
+                                <img src="{{ related_vlog.thumbnail.url }}" class="card-img-top" alt="{{ related_vlog.title }}" 
+                                    style="height: 150px; object-fit: cover;">
+                                {% endif %}
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">{{ related_vlog.title }}</h5>
+                                    <div class="mt-auto">
+                                        <small class="text-muted">
+                                            {{ related_vlog.published_date|date:"M d, Y" }}
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-transparent border-0">
+                                    <a href="{{ related_vlog.get_absolute_url }}" class="btn btn-primary w-100">Watch Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <!-- Vlog Info Card -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="fas fa-video me-2"></i>Vlog Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-user me-2 text-primary"></i> {{ vlog.author.get_full_name }}</li>
+                                <li class="mb-2"><i class="fas fa-calendar me-2 text-primary"></i> {{ vlog.published_date|date:"F d, Y" }}</li>
+                                <li class="mb-2"><i class="fas fa-folder me-2 text-primary"></i> {{ vlog.category.name }}</li>
+                                <li class="mb-2"><i class="fas fa-eye me-2 text-primary"></i> {{ vlog.view_count }} views</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Share Vlog -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-share-alt me-2"></i>Share This Vlog</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-around">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" 
+                                   class="social-icon" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ vlog.title }}" 
+                                   class="social-icon" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ vlog.title }}" 
+                                   class="social-icon" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="mailto:?subject={{ vlog.title }}&body=Check out this vlog: {{ request.build_absolute_uri }}" 
+                                   class="social-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

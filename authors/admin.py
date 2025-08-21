@@ -20,13 +20,21 @@ class AuthorAdmin(UserAdmin):
     search_fields = ('username', 'first_name', 'last_name', 'email')
     ordering = ('-date_joined',)
     
-    
-    fieldsets = UserAdmin.fieldsets + (
-        ('Additional Info', {'fields': ('bio', 'profile_image')}),
+    # Define fieldsets explicitly to avoid conflicts with the custom date_joined field
+    fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        ('Personal info', {'fields': ('first_name', 'last_name', 'email', 'bio', 'profile_image')}),
+        ('Permissions', {
+            'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
+        }),
+        ('Important dates', {'fields': ('last_login',)}),
     )
     
-    add_fieldsets = UserAdmin.add_fieldsets + (
-        ('Additional Info', {'fields': ('bio', 'profile_image')}),
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username', 'password1', 'password2', 'first_name', 'last_name', 'email', 'bio', 'profile_image', 'is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
+        }),
     )
 
 

@@ -1,0 +1,54 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block content_title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>{% trans 'Admin Panel' %}</h2>
+            </div>
+            <div class="card-body">
+                <p>{% trans "Welcome to the Vibe-KE Blog Admin Panel. Here you can manage all aspects of your blog." %}</p>
+                
+                <div class="row mt-4">
+                    {% if app_list %}
+                        {% for app in app_list %}
+                            <div class="col-md-6 col-lg-4 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-header bg-primary text-white">
+                                        <h5 class="card-title mb-0">{{ app.name }}</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        {% for model in app.models %}
+                                            <div class="mb-2">
+                                                {% if model.admin_url %}
+                                                    <a href="{{ model.admin_url }}" class="text-decoration-none">
+                                                        <i class="fas fa-chevron-right me-2 text-primary"></i>{{ model.name }}
+                                                    </a>
+                                                {% else %}
+                                                    <span class="text-muted">
+                                                        <i class="fas fa-chevron-right me-2"></i>{{ model.name }}
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12">
+                            <p>{% trans "You don't have permission to view or edit anything." %}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

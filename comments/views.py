@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.urls import reverse
 from .models import Comment
 from articles.models import Article
 
@@ -28,7 +29,8 @@ def add_comment(request, article_slug):
         messages.success(request, 'Your comment has been submitted and is awaiting approval.')
         
         # Redirect to article with anchor to comments
-        return redirect('articles:article_detail', slug=article.slug) + '#comments'
+        article_url = reverse('articles:article_detail', kwargs={'slug': article.slug})
+        return redirect(article_url + '#comments')
     
     # If not POST, redirect to article
     return redirect('articles:article_detail', slug=article.slug)

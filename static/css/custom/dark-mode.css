@@ -7,8 +7,8 @@
     --dark-text: #e0e0e0;
     --dark-text-secondary: #b0b0b0;
     --dark-border: #333;
-    --dark-primary: #0d6efd;
-    --dark-primary-hover: #0b5ed7;
+    --dark-primary: #fda10d;
+    --dark-primary-hover: #fda10d;
 }
 
 /* Apply dark mode styles when dark mode is active */

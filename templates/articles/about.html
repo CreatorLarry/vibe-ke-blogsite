@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}About - Kenyan Events & Lifestyle Blog{% endblock %}
 
@@ -6,11 +7,12 @@
 <section class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto">
+            <!-- Main Content -->
+            <div class="col-lg-8">
                 <h1 class="display-4 mb-4">About Kenyan Events & Lifestyle</h1>
                 
                 <div class="text-center mb-4">
-                    <img src="https://placehold.co/800x400" class="img-fluid rounded shadow" alt="About Us">
+                    <img src="{% static 'images/about.jpg' %}" class="img-fluid rounded shadow" alt="About Us">
                 </div>
                 
                 <p class="lead">
@@ -73,14 +75,101 @@
                     </div>
                 </div>
                 
-                <h3 class="mt-5">Meet Our Team</h3>
-                <p>
-                    Our team of passionate writers and photographers are dedicated to bringing you the most 
-                    authentic and engaging content about Kenya's events and lifestyle scene.
-                </p>
-                
                 <div class="text-center mt-5">
                     <a href="{% url 'articles:contact' %}" class="btn btn-primary btn-lg">Contact Us</a>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 100px;">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="mb-0"><i class="fas fa-users me-2"></i>Our Team</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Our team of passionate writers and photographers are dedicated to bringing you the most 
+                                authentic and engaging content about Kenya's events and lifestyle scene.
+                            </p>
+                            
+                            <!-- Creator Card -->
+                            <div class="creator-card mt-4">
+                                <div class="text-center">
+                                    <img src="{% static 'images/you.jpg' %}" 
+                                         class="creator-image mb-3" 
+                                         alt="Mwangi Ngugi">
+                                </div>
+                                <h5 class="text-center mb-1">Mwangi Ngugi</h5>
+                                <p class="text-center">
+                                    <span class="badge bg-primary">Founder & Chief Visionary</span>
+                                </p>
+                                <p class="text-center text-muted small">
+                                    The creative force behind Vibe-KE, Mwangi brings passion and expertise to 
+                                    showcase Kenya's vibrant culture and lifestyle.
+                                </p>
+                            </div>
+                            
+                            <!-- Template for future stakeholders -->
+                            <!-- 
+                            <div class="creator-card mt-4">
+                                <div class="text-center">
+                                    <img src="{% static 'images/stakeholder-placeholder.jpg' %}" 
+                                         class="creator-image mb-3" 
+                                         alt="Stakeholder Name">
+                                </div>
+                                <h5 class="text-center mb-1">Stakeholder Name</h5>
+                                <p class="text-center">
+                                    <span class="badge bg-primary">Title</span>
+                                </p>
+                                <p class="text-center text-muted small">
+                                    Brief description of the stakeholder's role and contribution.
+                                </p>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                    
+                    <!-- Advertisement Section 1
+                    <div class="card advertisement-card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-ad me-2"></i>Advertisement</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="advertisement-placeholder">
+                                <i class="fas fa-bullhorn"></i>
+                                <p class="mb-0">Your ad here! Reach thousands of Kenyan lifestyle enthusiasts.</p>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <!-- Quick Facts -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-calendar-check text-primary me-2"></i>Founded in 2025</li>
+                                <li class="mb-2"><i class="fas fa-map-marker-alt text-primary me-2"></i>Based in Nairobi, Kenya</li>
+                                <li class="mb-2"><i class="fas fa-users text-primary me-2"></i>5+ Team Members</li>
+                                <li class="mb-2"><i class="fas fa-newspaper text-primary me-2"></i>100+ Articles Published</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Advertisement Section 2 -->
+                    <!-- <div class="card advertisement-card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-ad me-2"></i>Advertisement</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="advertisement-placeholder">
+                                <i class="fas fa-bullhorn"></i>
+                                <p class="mb-0">Promote your brand to our engaged audience.</p>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </div>

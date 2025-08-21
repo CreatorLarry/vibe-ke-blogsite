@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+{% load i18n admin_urls %}
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="{% static 'css/custom/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom/dark-mode.css' %}" rel="stylesheet" id="dark-mode-css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom Admin CSS -->
+    <link href="{% static 'css/custom/admin.css' %}" rel="stylesheet">
+    
+    {% block extrastyle %}{% endblock %}
+    {% if LANGUAGE_BIDI %}
+        <link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">
+    {% endif %}
+    {% block extrahead %}{% endblock %}
+</head>
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+  data-admin-utc-offset="{% now "Z" %}">
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'articles:home' %}">
+                <i class="fas fa-blog me-2"></i><span class="disappear">vibe-ke</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                            <a class="nav-link"  href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+                        </li>
+
+                    {% if user.is_active and user.is_staff %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'articles:home' %}">Back to Site</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                {% if user.is_active and user.is_staff %}
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {% firstof user.get_short_name user.get_username %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                {% if user.has_usable_password %}
+                                    <li><a class="dropdown-item" href="{% url 'admin:password_change' %}">Change Password</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item" href="{% url 'admin:logout' %}">Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="container-fluid mt-4">
+        <!-- {% if not is_popup %}
+            {% block breadcrumbs %}
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+                                </li>
+                                {% block custom_breadcrumbs %}{% endblock %}
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            {% endblock %}
+        {% endif %} -->
+
+        {% block messages %}
+            {% if messages %}
+                <div class="row">
+                    <div class="col-12">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock messages %}
+
+        <!-- Content -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>{% block content_title %}{% if title %}{{ title }}{% endif %}{% endblock %}</h1>
+                    </div>
+                    <div class="card-body">
+                        {% block content %}
+                            {% block object-tools %}{% endblock %}
+                            {{ content }}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-light bg-dark footer py-2 mt-5">
+          <div class="container text-center">
+            <small class="d-block">
+              &copy; 2025
+              <span class="fw-semibold text-warning">Vibe-KE Blog</span>
+            </small>
+            <small class="text-muted">
+              Designed with ❤️ by
+              <a
+                href="https://simple-gallery-portfolio.vercel.app/"
+                target="_blank"
+                class="text-decoration-none text-warning"
+                >Mwangi Ngugi</a
+              >
+            </small>
+          </div>
+        </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{% static 'js/custom/dark-mode.js' %}"></script>
+    
+    <!-- Custom Admin JS -->
+    <script src="{% static 'js/custom/admin.js' %}"></script>
+    
+    {% block extra_js %}
+    <script>
+        // Auto-close navbar when clicking a link (except dropdown toggles)
+        document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
+            link.addEventListener("click", (e) => {
+                if (link.classList.contains("dropdown-toggle")) {
+                    // don't close when dropdown toggle is clicked
+                    return;
+                }
+
+                const navbarCollapse = document.querySelector(".navbar-collapse");
+                if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+                    new bootstrap.Collapse(navbarCollapse).hide();
+                }
+            });
+        });
+    </script>
+    {% endblock %}
+    
+    {% block extrascript %}{% endblock %}
+</body>
+</html>
