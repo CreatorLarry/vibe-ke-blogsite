@@ -6,7 +6,15 @@ SECRET_KEY = 'django-insecure-774!+z2+5^+v%$#x%#x%#x%#x%#x%#x%#x%#x%#x%#x%#x%#x%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+# ALLOWED_HOSTS = [
+#     '127.0.0.1',
+#     'localhost',
+#     '.ngrok-free.app',
+# ]
+
+ALLOWED_HOSTS = ['*']
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

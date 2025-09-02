@@ -7,7 +7,16 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-774!+z2+5^+v%$#x%#x%#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+
+# ALLOWED_HOSTS = [
+#     '127.0.0.1',
+#     'localhost',
+#     '.ngrok-free.app',
+# ]
+
+ALLOWED_HOSTS = ['*']
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

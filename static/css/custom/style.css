@@ -552,3 +552,11 @@ h2 {
     transform: rotate(360deg);
   }
 }
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
