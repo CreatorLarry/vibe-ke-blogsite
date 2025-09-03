@@ -19,7 +19,7 @@ body {
   color: #333;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -222,7 +222,7 @@ h2 {
   box-shadow: 0 4px 12px rgba(219, 39, 65, 0.3);
 }
 
-.btn-primary:hover a{
+.btn-primary:hover a {
   color: var(--kenyan-gold) !important;
 }
 
@@ -233,7 +233,6 @@ h2 {
   --bs-btn-active-border-color: transparent;
   --bs-btn-active-bg: var(--kenyan-gold);
 }
-
 
 .btn-outline-primary:hover {
   background-color: var(--kenyan-red);
@@ -476,7 +475,7 @@ h2 {
   .featured-banner {
     height: 300px;
   }
-  
+
   .creator-image {
     width: 100px;
     height: 100px;
@@ -485,6 +484,20 @@ h2 {
   .btn {
     padding: 0.4rem 1.2rem;
     font-size: 0.75rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 ,
+  .label{
+    font-size: 1rem;
   }
 }
 
