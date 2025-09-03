@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = 'django-insecure-774!+z2+5^+v%$#x%#x%#x%#x%#x%#x%#x%#x%#x%#x%#x%#x%#x%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -53,9 +53,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -138,10 +138,11 @@ USE_TZ = True
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Static files
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]  # your project static folder
-STATIC_ROOT = BASE_DIR / "staticfiles"  
 
+STATICFILES_DIRS = [BASE_DIR / "static"]   # your local static
+STATIC_ROOT = BASE_DIR / "staticfiles"     # for collectstatic
 # Media files (User uploaded content)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

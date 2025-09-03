@@ -1,0 +1,179 @@
+/* Dark Mode Styles for Kenyan Events & Lifestyle Blog */
+
+/* Dark Mode Variables */
+:root {
+    --dark-bg: #121212;
+    --dark-card-bg: #1e1e1e;
+    --dark-text: #e0e0e0;
+    --dark-text-secondary: #b0b0b0;
+    --dark-border: #333;
+    --dark-primary: #fda10d;
+    --dark-primary-hover: #fda10d;
+}
+
+/* Apply dark mode styles when dark mode is active */
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+/* Navigation */
+body.dark-mode .navbar {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+body.dark-mode .navbar-brand,
+body.dark-mode .navbar-nav .nav-link {
+    color: var(--dark-text) !important;
+}
+
+body.dark-mode .navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+}
+
+/* Cards */
+body.dark-mode .card {
+    background-color: var(--dark-card-bg);
+    border: 1px solid var(--dark-border);
+    color: var(--dark-text);
+}
+
+body.dark-mode .card-title,
+body.dark-mode .card-text {
+    color: var(--dark-text);
+}
+
+/* Buttons */
+body.dark-mode .btn-primary {
+    background-color: var(--dark-primary);
+    border-color: var(--dark-primary);
+    color: var(--dark-text);
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: var(--dark-primary-hover);
+    border-color: var(--dark-primary-hover);
+}
+
+body.dark-mode .btn-outline-primary {
+    color: var(--dark-primary);
+    border-color: var(--dark-primary);
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background-color: var(--dark-primary);
+    border-color: var(--dark-primary);
+}
+
+/* Forms */
+body.dark-mode .form-control {
+    background-color: #2d2d2d;
+    border: 1px solid var(--dark-border);
+    color: var(--dark-text);
+}
+
+body.dark-mode .form-control:focus {
+    background-color: #2d2d2d;
+    border-color: var(--dark-primary);
+    color: var(--dark-text);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+body.dark-mode .form-control::placeholder {
+    color: var(--dark-text-secondary);
+}
+
+/* Footer */
+body.dark-mode .footer {
+    background-color: #1a1a1a;
+    border-top: 1px solid var(--dark-border);
+}
+
+/* Alerts */
+body.dark-mode .alert {
+    background-color: #2d2d2d;
+    border: 1px solid var(--dark-border);
+    color: var(--dark-text);
+}
+
+/* Badges */
+body.dark-mode .badge {
+    color: var(--dark-text);
+}
+
+/* Pagination */
+body.dark-mode .page-link {
+    background-color: #2d2d2d;
+    border: 1px solid var(--dark-border);
+    color: var(--dark-text);
+}
+
+body.dark-mode .page-link:hover {
+    background-color: #3d3d3d;
+    border-color: var(--dark-border);
+    color: var(--dark-text);
+}
+
+body.dark-mode .page-item.active .page-link {
+    background-color: var(--dark-primary);
+    border-color: var(--dark-primary);
+    color: var(--dark-text);
+}
+
+/* Tables */
+body.dark-mode table {
+    color: var(--dark-text);
+}
+
+body.dark-mode table thead {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode table th,
+body.dark-mode table td {
+    border-color: var(--dark-border);
+}
+
+/* Modals */
+body.dark-mode .modal-content {
+    background-color: var(--dark-card-bg);
+    color: var(--dark-text);
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+    border-color: var(--dark-border);
+}
+
+/* Code blocks */
+body.dark-mode code,
+body.dark-mode pre {
+    background-color: #2d2d2d;
+    color: var(--dark-text);
+}
+
+/* Images */
+body.dark-mode img {
+    filter: brightness(0.9);
+}
+
+/* Links */
+body.dark-mode a {
+    color: #6ea8fe;
+}
+
+body.dark-mode a:hover {
+    color: #8bb9fe;
+}
+
+/* Horizontal rules */
+body.dark-mode hr {
+    border-color: var(--dark-border);
+}
+
+/* Blockquotes */
+body.dark-mode blockquote {
+    border-left-color: var(--dark-primary);
+    background-color: rgba(13, 110, 253, 0.1);
+}
