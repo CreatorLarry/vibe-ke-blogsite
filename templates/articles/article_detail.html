@@ -35,17 +35,18 @@ Lifestyle Blog{% endblock %} {% block content %}
     <!-- Article Content -->
     <div class="row">
       <div class="col-lg-8">
+        <div class="article-content">{{ article.excerpt|linebreaks }}</div>
         <div class="article-content">{{ article.content|linebreaks }}</div>
 
         <!-- Tags -->
-        <div class="mt-4">
+        <!-- <div class="mt-4">
           <h5>Tags</h5>
           <div>
             <span class="badge bg-secondary me-1">Kenya</span>
             <span class="badge bg-secondary me-1">Travel</span>
             <span class="badge bg-secondary me-1">Culture</span>
           </div>
-        </div>
+        </div> -->
 
         <!-- Social Sharing -->
         <div class="mt-4">
