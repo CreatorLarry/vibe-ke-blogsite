@@ -206,6 +206,8 @@ h2 {
   font-size: 0.85rem;
   transition: all 0.3s ease;
   border: none;
+  margin-top: 1.5em;
+  box-shadow: none;
 }
 
 .btn-primary {
@@ -227,7 +229,11 @@ h2 {
 .btn-outline-primary {
   border: 2px solid var(--kenyan-red);
   color: var(--kenyan-red);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-active-bg: var(--kenyan-gold);
 }
+
 
 .btn-outline-primary:hover {
   background-color: var(--kenyan-red);
@@ -460,11 +466,11 @@ h2 {
   }
 
   .display-4 {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 
   .article-content {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .featured-banner {
@@ -472,8 +478,13 @@ h2 {
   }
   
   .creator-image {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .btn {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.75rem;
   }
 }
 
@@ -559,4 +570,18 @@ h2 {
 
 .navbar-toggler:focus {
   box-shadow: none;
+}
+
+.form-check-input:checked {
+  background-color: var(--kenyan-red);
+  border-color: var(--kenyan-red);
+}
+
+.form-check-input:focus {
+  border-color: var(--kenyan-gold);
+  box-shadow: 0 0 0 0.25rem #ffd90057;
+}
+
+.btn-search {
+  margin-top: 0 !important;
 }
