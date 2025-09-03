@@ -61,6 +61,7 @@
 </section>
 {% endif %}
 
+
 <!-- Advertisements Section -->
 {% if advertisements %}
 <section class="py-3">
@@ -74,17 +75,17 @@
                         {% if ad.image %}
                         <div class="text-center mb-3">
                             <a href="{{ ad.link }}" target="_blank">
-                                <img src="{{ ad.image.url }}" class="img-fluid" alt="{{ ad.title }}" style="max-height: 200px; object-fit: cover;">
+                                <img src="{{ ad.image.url }}" class="img-fluid" alt="{{ ad.title }}" style="max-height: 200px; object-fit: cover; width: 100%;">
                             </a>
                         </div>
                         {% endif %}
                         <h5 class="card-title">{{ ad.title }}</h5>
                         {% if ad.content %}
-                        <p class="card-text">{{ ad.content|truncatewords:20 }}</p>
+                        <p class="card-text">{{ ad.content|truncatewords:50 }}</p>
                         {% endif %}
                         {% if ad.link %}
                         <div class="mt-auto">
-                            <a href="{{ ad.link }}" class="btn btn-primary" target="_blank">Learn More</a>
+                            <a href="{{ ad.link }}" class="btn btn-primary" target="_blank">Talk To Us</a>
                         </div>
                         {% endif %}
                     </div>

@@ -26,22 +26,22 @@
                 <!-- Social Links -->
                 <div class="text-center mb-5">
                     {% if author.profile.twitter_handle %}
-                    <a href="https://twitter.com/{{ author.profile.twitter_handle }}" class="btn btn-outline-primary me-2">
+                    <a href="https://twitter.com/{{ author.profile.twitter_handle }}" target="_blank" class="btn btn-outline-primary me-2">
                         <i class="fab fa-twitter"></i> Twitter
                     </a>
                     {% endif %}
                     {% if author.profile.facebook_url %}
-                    <a href="{{ author.profile.facebook_url }}" class="btn btn-outline-primary me-2">
+                    <a href="{{ author.profile.facebook_url }}" target="_blank" class="btn btn-outline-primary me-2">
                         <i class="fab fa-facebook"></i> Facebook
                     </a>
                     {% endif %}
                     {% if author.profile.instagram_handle %}
-                    <a href="https://instagram.com/{{ author.profile.instagram_handle }}" class="btn btn-outline-danger me-2">
+                    <a href="https://instagram.com/{{ author.profile.instagram_handle }}" target="_blank" class="btn btn-outline-danger me-2">
                         <i class="fab fa-instagram"></i> Instagram
                     </a>
                     {% endif %}
                     {% if author.profile.linkedin_url %}
-                    <a href="{{ author.profile.linkedin_url }}" class="btn btn-outline-primary">
+                    <a href="{{ author.profile.linkedin_url }}" target="_blank" class="btn btn-outline-primary">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
                     {% endif %}
