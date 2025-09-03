@@ -16,6 +16,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://web-production-bef09.up.railway.app",
+]
+
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
